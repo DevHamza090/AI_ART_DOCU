@@ -6,7 +6,7 @@ Welcome to the documentation for the AI Art Generator Android app API. This API 
 ## Base URL
 The base URL for the API is:
 ```
-https://aiartgenerator.metexlabz.com/api/
+https://com.example.base_url.com/api
 ```
 
 ## API Key
@@ -72,13 +72,13 @@ This endpoint is used to generate an artistic image based on the provided parame
 - `prompt` (String, required): The user's prompt for generating the image.
 - `model` (String, optional): The model to use for image generation (default: `realisticVisionV51_v51VAE`).
 - `negative_prompt` (String, optional): A negative prompt to influence the generation (default: `glitch`).
-- `styles` (String, optional): The artistic style to apply to the image (default: `anime`).
-- `width` (String, required): The width of the generated image.
-- `height` (String, required): The height of the generated image.
-- `seed` (String, optional): Seed for randomization (default: `-1`).
-- `cfg_scale` (String, required): Configuration scale.
-- `steps` (String, required): The number of steps for generation.
-- `enable_hr` (String, optional): Enable high resolution (default: `True`).
+- `styles` (String, required): The artistic style to apply to the image (default: `anime`).
+- `width` (String, required): The width of the generated image(default: `512`).
+- `height` (String, required): The height of the generated image(default: `512`).
+- `seed` (String, required): Seed for randomization (default: `-1`).
+- `cfg_scale` (String, required): Configuration scale(default: `7`).
+- `steps` (String, required): The number of steps for generation (default: `30`).
+- `enable_hr` (String, required): Enable high resolution (default: `True`).
 
 #### Response
 - The response will contain the generated image file.
@@ -88,17 +88,17 @@ Here's an example of how to make an API request using the `generateArt` endpoint
 
 ```kotlin
 val artApi = Retrofit.Builder()
-    .baseUrl("https://aiartgenerator.metexlabz.com/api/")
+    .baseUrl("https://com.example.base_url.com/api")
     .build()
     .create(ArtApi::class.java)
 
 val call = artApi.generateArt(
     devKey = "YOUR_API_KEY",
     prompt = "Generate a beautiful landscape",
-    width = "800",
-    height = "600",
-    cfgScale = "2.0",
-    steps = "500"
+    width = "512",
+    height = "512",
+    cfgScale = "7",
+    steps = "30"
 )
 
 call.enqueue(object : Callback<ResponseBody> {
@@ -117,5 +117,3 @@ call.enqueue(object : Callback<ResponseBody> {
     }
 })
 ```
-
-That's it! You can now integrate the AI Art Generator API into your Android app and provide users with the ability to create stunning artistic images.
