@@ -73,12 +73,12 @@ This endpoint is used to generate an artistic image based on the provided parame
 - `model` (String, optional): The model to use for image generation (default: `realisticVisionV51_v51VAE`).
 - `negative_prompt` (String, optional): A negative prompt to influence the generation (default: `glitch`).
 - `styles` (String, required): The artistic style to apply to the image (default: `anime`).
-- `width` (String, required): The width of the generated image(default: `512`).
-- `height` (String, required): The height of the generated image(default: `512`).
+- `width` (String, required): The width of the generated image(default: `512`) (max: `2000`) (width mush divided on `8`).
+- `height` (String, required): The height of the generated image(default: `512`)(max: `2000`) (height mush divided on `8`).
 - `seed` (String, required): Seed for randomization (default: `-1`).
-- `cfg_scale` (String, required): Configuration scale(default: `7`).
-- `steps` (String, required): The number of steps for generation (default: `30`).
-- `enable_hr` (String, required): Enable high resolution (default: `True`).
+- `cfg_scale` (String, required): Configuration scale(default: `7`)(`1-20`).
+- `steps` (String, required): The number of steps for generation (default: `30`)(`1-40`).
+- `enable_hr` (String, required): Enable high resolution (default: `False`)(`True`, `False`).
 
 #### Response
 - The response will contain the generated image file.
